@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    font-family: 'Oswald', sans-serif;
+
+}
+.body2{
+    height: 100vh;
+    background-image: url(../Imágenes/subtle-prism.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+}
+
+form,
+table,
+.json {
+    border-radius: 10px;
+    background-color: blueviolet;
+    color: white;
+    padding: 20px;
+}
+
+.borde {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+h2,
+h3 {
+    text-align: center;
+}
+
+main {
+    min-height: 81vh;
+    font-family: 'Oswald', sans-serif;
+
+}
+
+footer {
+    background-color: #0068a2;
+    height: 15vh;
+}
+
+pre {
+    color: black;
+}
+
+nav {
+    width: 80%;
+    margin: auto;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav a {
+    text-decoration: none;
+    color:blueviolet;
+    margin-right: 2rem;
+    font-size: large;
+    position: relative;
+}
+
+nav a::before {
+    content: "";
+    height: 3px;
+    width: 0%;
+    background: #ff2c7d;
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+    transition: 0.4s ease-out;
+}
+
+nav a:hover::before {
+    width: 100%;
+}
+
+.logo {
+    width: 170px;
+    height: 120px;
+    object-fit: cover;
+}
+h1 {
+    color:black;
+    text-align: center;
+    padding: 2rem;
+}
+.nuevaCuenta{
+    border-radius: 25px;
+    background-color: #feb543;
+    padding: 1rem;
+
+}
+.nuevaCuenta a{
+    text-decoration: none;
+    color: black;
+}
+.active{
+    background-color: #feb543;
+    padding: 1rem;
+    border-radius: 25px;
+}
+.transacciones{
+    background-color: #feb543;
+    color: black;
+}
+.transacciones a:hover{
+    background-color: blueviolet;
+}
+.fondo {
+    background-color: #00a7f9;
+}
+
+.fondo2 {
+    background-color: #0068a2;
+    color: white;
+}
+
+.texto {
+    text-align: center;
+}
+
+.credito {
+    background-color: green
+}
+
+.debito {
+    background-color: red
+}
+
+.slogan {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 20rem;
+    margin-top: 4rem;
+
+}
+.slogan img{
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+}
+.slogan p{
+    position: absolute;
+    color: white;
+}
+.boton{
+    background-color: #ff2c7d;
+    padding: 1rem;
+    border-radius: 6px;
+}
+.tarjeta{
+    width: 100%;
+    margin: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,.5);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    cursor: default;
+    transition: all 400ms ease;
+    color: black;
+}
+.tarjeta:hover{
+    box-shadow: 5px 5px 20px   rgba(0, 0, 0, 0.4);
+    transform: translateY(-3%);
+}
+.tarjeta img{
+    width: 100%;
+    height:210px ;
+}
+.tarjeta .contenido{
+    margin: 20px;
+    
+    text-align: center;
+
+}
+.tarjeta .contenido p{
+    line-height: 1.5;
+}
+.tarjeta .contenido a{
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px ;
+    margin-top: 10px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;
+    transition: all 400ms ease;
+
+}
+.tarjeta .contenido a:hover{
+    background-color:black;
+    color: white;
+}
+.loan-form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .btn-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-submit:hover {
+    background-color: #45a049;
+  }
+  @media only screen and (min-width: 320px) and (max-width: 863px){
+    nav a{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 1rem;
+    }
+}  
+@media only screen and (min-width: 315px) and (max-width: 320px){
+    body {
+       overflow-x: hidden;
+      }
+  }
+  .table-rounded {
+    border-radius: 10px;
+}
+h2{
+    color: black;
+}
+
+

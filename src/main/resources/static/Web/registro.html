@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>| Registrarse</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="./BigWing/css/style.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- responsive style -->
+    <link href="./BigWing/css/responsive.css" rel="stylesheet" />
+	<link rel="stylesheet" href="./Assets/Estilos/login.css">
+	<link rel="shortcut icon" href="./Assets/Imágenes/favicon.png" type="image/x-icon">
+</head>
+<body>
+	<main id="app">
+		<section class="welcome_section layout_padding">
+      
+         
+		</section>
+		<div class="service_section">
+			<!-- info section -->
+			<section class="info_section layout_padding2-bottom">
+	
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-6 col-lg-4">
+							<div class="login-wrap py-5">
+								<div class="img d-flex align-items-center justify-content-center"
+									style="background-image: url(./Assets/Imágenes/subtle-prism.png);"></div>
+								<h3 class="text-center mb-0">Registrarse</h3>
+								<p class="text-center">Regístrate ingresando tu información a continuación</p>
+								<form action="#" class="login-form" @submit.prevent>
+									<div class="form-group">
+										<div class="icon d-flex align-items-center justify-content-center"><span
+												class="fa fa-user"></span></div>
+										<input v-model="firstName" type="text" class="form-control" placeholder="Nombre"
+											required>
+										<div class="valid-feedback">Correcto.</div>
+										<div class="invalid-feedback">Por favor complete este campo.</div>
+									</div>
+									<div class="form-group">
+										<div class="icon d-flex align-items-center justify-content-center"><span
+												class="fa fa-user"></span></div>
+										<input v-model="lastName" type="text" class="form-control" placeholder="Apellido"
+											required>
+										<div class="valid-feedback">Correcto.</div>
+										<div class="invalid-feedback">Por favor complete este campo.</div>
+									</div>
+									<div class="form-group">
+										<div class="icon d-flex align-items-center justify-content-center"><span
+												class="fa fa-user"></span></div>
+										<input v-model="postEmail" type="email" class="form-control" placeholder="Email"
+											required>
+										<div class="valid-feedback">Correcto.</div>
+										<div class="invalid-feedback">Por favor complete este campo.</div>
+	
+		
+		
+										<div class="form-group">
+											<div class="icon d-flex align-items-center justify-content-center"><span
+													class="fa fa-lock"></span></div>
+											<input v-model="postPassword" type="password" class="form-control"
+												placeholder="Password" required>
+											<div class="valid-feedback">Correcto.</div>
+											<div class="invalid-feedback">Por favor complete este campo.</div>
+										</div>
+									
+										<div class="form-group">
+											<button type="submit" class="btn form-control btn-primary rounded submit px-3"
+												@click="register">Registrarse</button>
+										</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					
+	
+			</section>
+	
+			<!-- end info_section -->
+	
+			<!-- footer section -->
+			<section class="container-fluid footer_section">
+				<p>
+					© 2019 Todos los derechos reservados
+	
+				</p>
+			</section>
+	</main>
+
+
+
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="./Assets/Js/index.js"></script>
+
+
+
+</body>
+<!-- <body>
+	<nav class="d-flex justify-content-between align-items-center">
+		<img src="./Assets/Imágenes/Mindhub Brothers.gif" alt="" class="logo">
+
+		<div>
+			<a href="./index.html">Home</a>
+		</div>
+	</nav>
+	<section class="ftco-section" id="app">
+		<div class="container">
+			
+		</div>
+	</section>
+
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="./Assets/Js/index.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+
+</body> -->
+
+</html>

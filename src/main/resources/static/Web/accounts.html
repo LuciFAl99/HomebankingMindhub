@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>| Mis Cuentas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha384-Sl5FOgvVfBHhT0P8z+Lp9GEz+GX/yUc74SpvIksN0NBoRUl0BQ+mlz3ZNEK8Bk0M" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./BigWing/css/bootstrap.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <link href="./BigWing/css/responsive.css" rel="stylesheet" />
+  <link href="./BigWing/css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./Assets/Estilos/style.css">
+  <link rel="shortcut icon" href="./Assets/Imágenes/favicon.png" type="image/x-icon">
+
+</head>
+
+<body id="app">
+  <nav class="d-flex justify-content-between">
+    <img src="./Assets/Imágenes/logo.png" alt="" class="logo">
+
+    <div>
+      <a href="./accounts.html" class="active"> <i class="fas fa-university"></i> Cuentas</a>
+      <a href="./cards.html"><i class="fas fa-credit-card"></i> Tarjetas</a>
+      <a href="" @click="logout"> <i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+    </div>
+  </nav>
+  <section class="welcome_section layout_padding">
+
+
+  </section>
+  <div class="service_section">
+    <!-- info section -->
+    <section class="info_section layout_padding2-bottom">
+
+      <div class="container">
+        <div class="container">
+          <h1>Tus Cuentas</h1>
+          <div class="d-flex justify-content-center mb-3 gap-2">
+            <div class="d-flex justify-content-center gap-2">
+              <div>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#modalCrearCuenta">
+                  <i class="bi bi-plus-square"></i> Crear cuenta
+                </a>
+              </div>
+
+            </div>
+            <div>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#transferModal">
+                <i class="fas fa-exchange-alt"></i>
+                Hacer transferencia
+              </a>
+            </div>
+          </div>
+
+
+          <div class="modal fade" id="modalCrearCuenta" tabindex="-1" aria-labelledby="modalCrearCuentaLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalCrearCuentaLabel">Crear nueva cuenta</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form @submit.prevent="createAccount">
+                    <div class="mb-3">
+                      <label for="accountType" class="form-label">Tipo de cuenta:</label>
+                      <select class="form-select" id="accountType" v-model="accountType" required>
+                        <option value="" disabled selected>Selecciona el tipo de cuenta</option>
+                        <option value="AHORRO">Ahorro</option>
+                        <option value="CORRIENTE">Corriente</option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-success" @click="createAccount">Crear cuenta</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-4 tarjeta pb-2" v-if="accounts.length != 0"
+            v-for="account of accounts">
+            <div>
+              <div>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <h2> {{account.number}}</h2>
+                    <p>Tipo de cuenta: {{account.accountType}}</p>
+                    <p>Fecha de creación: {{account.creationDate.slice(0, 10)}} a las
+                      {{account.creationDate.slice(11, 16)}} hs.</p>
+                    <p>Balance: ${{account.balance.toLocaleString(undefined, { minimumFractionDigits: 2,
+                      maximumFractionDigits: 2 })}}</p>
+
+                  </li>
+
+                  <a :href="`./account.html?id=`+account.id" class="btn btn-info mt-2 transacciones"> <i
+                      class="bi bi-arrow-right-square"></i> Transacciones</a>
+                </ul>
+
+
+
+              </div>
+              <button @click="deleteAccount(account.id)" class="btn btn-danger mt-2">
+                <i class="fas fa-trash"></i> Eliminar Cuenta
+              </button>
+
+            </div>
+
+          </div>
+          <div v-else>
+            <h3>Aún no hay cuentas creadas</h3>
+          </div>
+        </div>
+        <div>
+          <a data-bs-toggle="modal" data-bs-target="#pdfModal">
+            <i class="fas fa-download"></i>
+            Descargar estado de cuenta
+          </a>
+        </div>
+
+
+        <h2 class="mt-3 mb-4">Prestamos</h2>
+        <div class="d-flex justify-content-center gap-2">
+          <div>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#loanModal">
+              <i class="fas fa-hand-holding-usd"></i>
+              Solicitar préstamo
+            </a>
+          </div>
+          <div>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#payLoanModal">
+              <i class="fas fa-dollar-sign"></i>
+              Pagar préstamo
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="loanModal" tabindex="-1" aria-labelledby="loanModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="loanModalLabel">Formulario de préstamo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+              </div>
+              <div class="modal-body">
+                <form @submit.prevent>
+                  <div class="mb-3">
+                    <label for="selectedLoan" class="form-label">Tipo de préstamo:</label>
+                    <select class="form-select" id="selectedLoan" v-model="selectedLoan" name="selectedLoan"
+                      @change="loadPayments" required>
+                      <option value="" disabled selected>Selecciona el tipo de préstamo</option>
+                      <option v-for="loan in loans" :value="loan.id">{{ loan.name }}</option>
+                    </select>
+                  </div>
+                  <div v-if="selectedLoan" class="mb-3">
+                    <p class="maxAmount rounded d-flex justify-content-center">
+                      Monto máximo: {{ getMaxAmount(selectedLoan) }}
+                    </p>
+                  </div>
+                  <div class="mb-3">
+                    <label for="selectedPayment" class="form-label">Cuotas:</label>
+                    <select class="form-select" id="selectedPayment" v-model="selectedPayment" name="selectedPayment">
+                      <option value="">Selecciona las cuotas</option>
+                      <option v-for="payment of filteredPayments" :value="payment">{{ payment }}</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="amount" class="form-label">Monto del préstamo:</label>
+                    <input type="number" id="amount" class="form-control" v-model="amount">
+                  </div>
+                  <div class="mb-3">
+                    <label for="selectAccount" class="form-label">Cuenta destino:</label>
+                    <select class="form-select" id="selectAccount" v-model="selectAccount">
+                      <option value="">Selecciona la cuenta con la que solicitarás el préstamo</option>
+                      <option :value="account.number" v-for="account of accounts">{{ account.number }}</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" @click="surePopUp()">Solicitar Préstamo</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-4 tarjeta pb-3" v-if="clients.loans && clients.loans.length > 0"
+            v-for="loan of clients.loans">
+            <div>
+              <div>
+                <ul class="list-group">
+                  <li>
+                    <p><i class="fas fa-handshake"></i>
+                      Nombre del préstamo: {{ loan.name }}</p>
+                    <p><i class="bi bi-cash mr-2"></i>Monto solicitado: $ {{ loan.amount.toLocaleString() }}</p>
+                    <p><i class="bi bi-currency-dollar"></i> Cuotas: {{loan.originalPayments}}</p>
+                    <p><i class="bi bi-currency-dollar"></i> Cuotas por pagar: {{ loan.payments }}</p>
+                    <p><i class="bi bi-cash mr-2"></i>Monto de las cuotas: $ {{ (loan.amount * loan.interest /
+                      loan.originalPayments).toLocaleString(undefined, { minimumFractionDigits: 2,
+                      maximumFractionDigits: 2 }) }}</p>
+                    <p><i class="bi bi-cash mr-2"></i>Monto total a pagar: $ {{ (loan.amount *
+                      loan.interest).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                      }}</p>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div v-else>
+            <h3>No hay préstamos solicitados</h3>
+          </div>
+        </div>
+
+    </section>
+  </div>
+  <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pdfModalLabel">Generar estado de cuenta en PDF</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form @submit.prevent="submitForm">
+            <div class="mb-3">
+              <label for="accNumber" class="form-label">Número de cuenta:</label>
+              <select id="accNumber" v-model="accNumber" class="form-select">
+                <option value="">Seleccionar cuenta</option>
+                <option v-for="account in accounts" :value="account.number">{{ account.number }}</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="dateIni" class="form-label">Fecha de inicio:</label>
+              <input type="date" id="dateIni" min="2021-08-01" v-model="dateIni" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="dateEnd" class="form-label">Fecha de fin:</label>
+              <input type="date" id="dateEnd" max="2023-06-30" v-model="dateEnd" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Generar PDF</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón para abrir el modal -->
+  <!-- Botón para abrir el modal -->
+
+
+  <!-- Modal para pagar el préstamo -->
+  <div class="modal fade" id="payLoanModal" tabindex="-1" aria-labelledby="payLoanModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="payLoanModalLabel">Pagar Préstamo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form @submit.prevent="payLoan">
+            <div class="mb-3">
+              <label for="prestamo">Préstamo:</label>
+              <select class="form-control" id="prestamo" v-model="idLoan" required>
+                <option value="" disabled selected>Selecciona el préstamo</option>
+                <option v-for="loan in loans2" :value="loan.id">{{ loan.name }}</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="account">Cuenta:</label>
+              <select class="form-control" id="account" v-model="account3" required>
+                <option value="" disabled selected>Selecciona la cuenta</option>
+                <option v-for="account in accounts" :value="account.number">{{ account.number }}</option>
+              </select>
+            </div>
+            <div class="mb-3 maxAmount monto">
+              <label>Monto de la cuota:</label>
+              <p>$ {{ cuotaPrestamo }}</p>
+            </div>
+            <div class="mb-3">
+              <label for="amount3">Monto:</label>
+              <input type="number" class="form-control" id="amount3" v-model="amount3" required>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary">Pagar</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="transferModal" tabindex="-1" aria-labelledby="transferModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="transferModalLabel">Realizar Transferencia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            {{ selectedAccount2 }}
+            <h4 class="textColor2 text-center container">¿A quién quieres hacerle una transferencia?</h4>
+            <form class="d-flex justify-content-center container">
+              <select class="form-select" v-model="radioTransfer">
+                <option value="Own">Cuenta propia</option>
+                <option value="Third">Otra cuenta</option>
+              </select>
+            </form>
+            <h5 class="text-center textColor2 container">Seleccionar cuenta desde la que harás la transferencia</h5>
+            <form class="d-flex justify-content-center container">
+              <select class="form-select" v-model="selectAccount2">
+                <option v-for="account of accounts" :value="account.number" :key="account.number">
+                  {{account.number}} Balance: {{account.balance}}
+                </option>
+              </select>
+            </form>
+            <div v-if="radioTransfer === 'Third'"
+              class="container pb-3 d-flex justify-content-center align-items-center flex-column pt-3">
+              <label for="accountThirdD" class="form-label textColor2">Elige la cuenta a la que vas a
+                transferir:</label>
+              <input type="accountThirdD" class="transferInputs form-control" style="width: 20rem;"
+                placeholder="VIN****" v-model="accountThirdD" id="accountThirdD">
+              <div class="transferInputs">
+                <label for="description"
+                  class="pt-3 form-label textColor2 d-flex justify-content-center">Descripción</label>
+                <input type="description" class="form-control" style="width: 20rem;"
+                  placeholder="ej. Transferencia de..." v-model="description" id="description">
+              </div>
+              <div class="transferInputs">
+                <label for="amount2" class="form-label textColor2 d-flex justify-content-center">Monto</label>
+                <input type="amount2" class="form-control" style="width: 20rem;" placeholder="ej. 1000"
+                  v-model="amount2" id="amount2">
+              </div>
+              <div class="d-flex justify-content-center p-3">
+                <button class="btn border rounded" v-on:click="transfer()">Transferir</button>
+              </div>
+            </div>
+            <div v-if="radioTransfer === 'Own'"
+              class="container pb-3 d-flex justify-content-center align-items-center pt-3 flex-column container">
+              <select class="form-select transferInputs" v-model="accountThirdD" style="width: 20rem;">
+                <option disabled selected value="">Elige la cuenta a la que vas a transferir</option>
+                <option v-for="account of accountsExcludingO" :value="account.number" :key="account.number">
+                  {{account.number}} Balance: {{account.balance}}
+                </option>
+              </select>
+              <div class="transferInputs">
+                <label for="description"
+                  class="pt-3 form-label textColor2 d-flex justify-content-center">Descripción:</label>
+                <input type="description" class="form-control" style="width: 20rem;"
+                  placeholder="ej. Transferencia de..." v-model="description" id="description">
+              </div>
+              <div class="transferInputs">
+                <label for="amount2" class="pt-3 form-label textColor2 d-flex justify-content-center">Monto:</label>
+                <input type="amount2" class="form-control" style="width: 20rem;" placeholder="ej. 1000"
+                  v-model="amount2" id="amount2">
+              </div>
+              <div class="d-flex justify-content-center p-3">
+                <button class="btn border rounded" v-on:click="transfer()">Transferir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="container-fluid footer_section">
+    <p>
+      © 2019 Todos los derechos reservados
+
+    </p>
+  </section>
+
+
+
+
+</body>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./Assets/Js/accounts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/5b81ef2a61.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="./BigWing/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="./BigWing/js/bootstrap.js"></script>
+
+</html>
