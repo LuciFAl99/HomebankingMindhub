@@ -194,7 +194,7 @@ const app = createApp({
       });
     },
     loadData() {
-      axios.get("http://localhost:8080/api/clients/current")
+      axios.get("/api/clients/current")
         .then((data) => {
           this.clients = data.data;
 
@@ -203,7 +203,7 @@ const app = createApp({
           console.log(error);
         });
 
-      axios.get("http://localhost:8080/api/loans")
+      axios.get("/api/loans")
         .then((data) => {
           this.loans = data.data
           console.log(this.loans);
@@ -233,7 +233,7 @@ const app = createApp({
       const installmentAmount = Math.ceil(this.amount);
 
       axios
-        .post("http://localhost:8080/api/loans", {
+        .post("/api/loans", {
           loanId: this.selectedLoan,
           amount: this.amount,
           payments: this.selectedPayment,
@@ -280,7 +280,7 @@ const app = createApp({
       });
     },
     payLoan() {
-      axios.get("http://localhost:8080/api/loans")
+      axios.get("/api/loans")
         .then((response) => {
       
 

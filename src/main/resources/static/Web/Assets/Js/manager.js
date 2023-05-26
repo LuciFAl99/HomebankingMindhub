@@ -19,7 +19,7 @@ const app = createApp({
   },
   methods: {
     loadData() {
-      axios.get("http://localhost:8080/api/clients")
+      axios.get("/api/clients")
         .then(response => {
           this.clientes = response.data;
           console.log(this.clientes)
@@ -28,7 +28,7 @@ const app = createApp({
         
     },
     logout() {
-        axios.post('http://localhost:8080/api/logout')
+        axios.post('/api/logout')
             .then(() => window.location.href = "/web/index.html")
     },
     addClient() {
@@ -41,7 +41,7 @@ const app = createApp({
         email: this.email
       };
     
-      axios.post('http://localhost:8080/rest/clients', newClient)
+      axios.post('/rest/clients', newClient)
        .then(response => {
          // Agregar el nuevo cliente al array clientes
          this.clientes.push(response.data);
