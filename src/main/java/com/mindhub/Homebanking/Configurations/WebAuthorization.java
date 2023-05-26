@@ -34,8 +34,8 @@ class WebAuthorization {
                .antMatchers(HttpMethod.PUT, "/api/clients/current/cards", "/api/clients/current/accounts/delete").hasAuthority("CLIENT")
                .antMatchers( "/api/clients/current/accounts/**", "/api/clients/current/cards/**", "/api/clients/current/transactions/**", "/api/clients/current", "/api/clients/current/loans/**", "/api/loans/**").hasAuthority("CLIENT")
                .antMatchers("/web/**").hasAuthority("CLIENT")
-               .antMatchers("/api/accounts/{id}").hasAnyAuthority("CLIENT", "ADMIN");
-               //.anyRequest().denyAll();
+               .antMatchers("/api/accounts/{id}").hasAnyAuthority("CLIENT", "ADMIN")
+               .anyRequest().denyAll();
 
         http.formLogin()
 
