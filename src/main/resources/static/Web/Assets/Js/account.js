@@ -27,7 +27,7 @@ const app = createApp({
         
         logout() {
           axios.post('/api/logout')
-              .then(() => window.location.href = "/web/BigWing/index.html")
+              .then(() => window.location.href = "/web/index.html")
       },
 
         sortTransactions() {

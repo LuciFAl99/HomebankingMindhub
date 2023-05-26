@@ -45,7 +45,7 @@ const app = createApp({
     },
     logout() {
       axios.post('/api/logout')
-        .then(() => window.location.href = "/web/BigWing/index.html")
+        .then(() => window.location.href = "/web/index.html")
     },
     createCard() {
       axios.post('/api/clients/current/cards', "type=" + this.cardType.toUpperCase() + "&color=" + this.cardColor.toUpperCase(), { headers: { 'content-type': 'application/x-www-form-urlencoded' } })

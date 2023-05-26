@@ -65,7 +65,7 @@ const app = createApp({
     },
     logout() {
       axios.post('/api/logout')
-        .then(() => window.location.href = "/web/BigWing/index.html")
+        .then(() => window.location.href = "/web/index.html")
     },
     calculateAmountWithoutInterest(amount) {
       return amount / 1.20;
@@ -257,7 +257,7 @@ const app = createApp({
     },
     logout() {
       axios.post("/api/logout").then(() => {
-        window.location.href = "/web/BigWing/index.html";
+        window.location.href = "/web/index.html";
       });
     },
     surePopUp() {
