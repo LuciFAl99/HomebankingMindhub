@@ -20,10 +20,14 @@ class WebAuthorization {
    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
        http.cors().and().authorizeRequests()
-               .antMatchers(HttpMethod.POST,"/api/clients/current/pay-card").permitAll()
-               .antMatchers(HttpMethod.POST, "/api/clients/**").permitAll()
-               .antMatchers(HttpMethod.POST ,"/api/login", "/api/logout").permitAll()
                .antMatchers( "/web/BigWing/**","/web/login.html", "/web/registro.html", "/web/index.html","/web/Assets/**","/web/**").permitAll()
+               .antMatchers("/web/login.html").permitAll()
+               .antMatchers("/posnet.html").permitAll()
+               .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
+               .antMatchers(HttpMethod.POST,"/api/login").permitAll()
+               .antMatchers(HttpMethod.POST,"/api/logout").permitAll()
+               .antMatchers(HttpMethod.POST,"/api/clients/current/pay-card").permitAll()
+
                .antMatchers("/manager.html").hasAuthority("ADMIN")
                .antMatchers("/api/admin/loan", "/web/Assets/Js/manager.html").hasAuthority("ADMIN")
                .antMatchers("/rest/**","/api/loans").hasAnyAuthority("ADMIN", "CLIENT")
