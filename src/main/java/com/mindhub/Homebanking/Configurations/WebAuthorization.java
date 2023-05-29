@@ -29,7 +29,7 @@ class WebAuthorization {
                .antMatchers(HttpMethod.POST,"/api/clients/current/pay-card").permitAll()
 
                .antMatchers("/manager.html").hasAuthority("ADMIN")
-               .antMatchers("/api/admin/loan", "/web/Assets/Js/manager.html").hasAuthority("ADMIN")
+               .antMatchers("/api/admin/loan", "/Web/Assets/Js/manager.html").hasAuthority("ADMIN")
                .antMatchers("/rest/**","/api/loans").hasAnyAuthority("ADMIN", "CLIENT")
                .antMatchers("/h2-console/**").hasAnyAuthority("ADMIN")
                .antMatchers("/api/accounts", "/api/clients",  "/api/logout").hasAuthority("ADMIN")
@@ -37,7 +37,7 @@ class WebAuthorization {
                .antMatchers(HttpMethod.POST, "/api/clients/current/accounts/**", "/api/clients/current/cards/**", "/api/clients/current/transactions/**", "/api/clients/current/loans/**",  "/api/loans/**", "/api/current/loans/**").hasAnyAuthority("CLIENT", "ADMIN")
                .antMatchers(HttpMethod.PUT, "/api/clients/current/cards", "/api/clients/current/accounts/delete").hasAuthority("CLIENT")
                .antMatchers( "/api/clients/current/accounts/**", "/api/clients/current/cards/**", "/api/clients/current/transactions/**", "/api/clients/current", "/api/clients/current/loans/**", "/api/loans/**").hasAuthority("CLIENT")
-               .antMatchers("/web/**").hasAuthority("CLIENT")
+               .antMatchers("/Web/**").hasAuthority("CLIENT")
                .antMatchers("/api/accounts/{id}").hasAnyAuthority("CLIENT", "ADMIN")
                .anyRequest().denyAll();
 
