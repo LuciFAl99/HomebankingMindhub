@@ -20,7 +20,7 @@ class WebAuthorization {
    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
        http.cors().and().authorizeRequests()
-               .antMatchers( "/web/BigWing/**","/web/login.html", "/web/registro.html", "/web/index.html","/web/Assets/**","/web/**").permitAll()
+               .antMatchers( "/Web/BigWing/**","/Web/login.html", "/Web/registro.html", "/Web/index.html","/Web/Assets/**","/Web/**").permitAll()
                .antMatchers("/web/login.html").permitAll()
                .antMatchers("/posnet.html").permitAll()
                .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
