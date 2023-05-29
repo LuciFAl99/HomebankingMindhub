@@ -45,7 +45,7 @@ const app = createApp({
     },
     logout() {
       axios.post('/api/logout')
-        .then(() => window.location.href = "/web/index.html")
+        .then(() => window.location.href = "/Web/index.html")
     },
     createCard() {
       axios.post('/api/clients/current/cards', "type=" + this.cardType.toUpperCase() + "&color=" + this.cardColor.toUpperCase(), { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
@@ -56,7 +56,7 @@ const app = createApp({
       }
 
       ))
-        .then(() => window.location.href = "/web/cards.html")
+        .then(() => window.location.href = "/Web/cards.html")
         .catch(error => {
           let errorMessage = error.response.data;
           errorMessage = errorMessage.replace(/\n/g, '<br>'); // Reemplazar saltos de línea por <br> para el formato HTML
@@ -92,7 +92,7 @@ const app = createApp({
             }
             ))
             .then(response => {
-              window.location.href = "/web/cards.html"
+              window.location.href = "/Web/cards.html"
             })
             .catch(error => {
               Swal.showValidationMessage(

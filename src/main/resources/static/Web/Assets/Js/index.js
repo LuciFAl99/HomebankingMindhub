@@ -25,7 +25,7 @@ const app = createApp({
                 if (this.email === "admin@admin.com") {
                   window.location.href = "/manager.html";
                 } else {
-                  window.location.href = "/web/accounts.html";
+                  window.location.href = "/Web/accounts.html";
                 }
               })
               .catch(err=>this.errorLogin = true);
@@ -40,7 +40,7 @@ const app = createApp({
 
                     axios.post('/api/login', "email=" + this.postEmail + "&password=" + this.postPassword,
                      { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
-                        .then(() => window.location.href = "/web/accounts.html")
+                        .then(() => window.location.href = "/Web/accounts.html")
 
                 })
                 .catch(error => {

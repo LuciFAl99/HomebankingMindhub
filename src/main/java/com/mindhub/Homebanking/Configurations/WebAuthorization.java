@@ -21,7 +21,7 @@ class WebAuthorization {
 
        http.cors().and().authorizeRequests()
                .antMatchers( "/Web/BigWing/**","/Web/login.html", "/Web/registro.html", "/Web/index.html","/Web/Assets/**","/Web/**").permitAll()
-               .antMatchers("/web/login.html").permitAll()
+               .antMatchers("/Web/login.html").permitAll()
                .antMatchers("/posnet.html").permitAll()
                .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
                .antMatchers(HttpMethod.POST,"/api/login").permitAll()

@@ -29,7 +29,7 @@ const app = createApp({
     },
     logout() {
         axios.post('/api/logout')
-            .then(() => window.location.href = "/web/index.html")
+            .then(() => window.location.href = "/Web/index.html")
     },
     addClient() {
       this.postClient();
@@ -54,7 +54,7 @@ const app = createApp({
     },
     logout() {
       axios.post('/api/logout')
-        .then(() => window.location.href = "/web/index.html")
+        .then(() => window.location.href = "/Web/index.html")
     },
     createLoan() {
       const payments = this.paymentsText.split(",").map(payment => parseInt(payment.trim()));
