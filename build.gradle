@@ -27,7 +27,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
 	implementation 'com.itextpdf:itextpdf:5.5.13'
-	implementation 'commons-io:commons-io:2.8.0'
 }
 
 tasks.named('test') {

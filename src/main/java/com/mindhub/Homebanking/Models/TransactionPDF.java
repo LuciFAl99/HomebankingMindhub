@@ -4,12 +4,9 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import org.apache.commons.io.IOUtils;
-
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -17,7 +14,7 @@ import java.util.List;
 public class TransactionPDF {
     private Account account;
     private List<Transaction> listTransactions;
-    private static final String LOGO_PATH = new File("E:/Descargas/DeployHomebanking/src/main/resources/static/Web/Assets/Imágenes/logo.png").getAbsolutePath(); // Ruta del archivo de imagen del logo
+    //private static final String LOGO_PATH = "E:\\Descargas\\Homebanking\\src\\main\\resources\\static\\Web\\Assets\\Imágenes\\logo.png"; // Ruta del archivo de imagen del logo
 
     public TransactionPDF(List<Transaction> listTransactions, Account account) {
         this.listTransactions = listTransactions;
@@ -66,12 +63,11 @@ public class TransactionPDF {
         Font detailsFont = FontFactory.getFont(FontFactory.HELVETICA, 12);
 
         //Logo
-        InputStream is = getClass().getResourceAsStream("/static/Web/Assets/logo.png");
-        Image logo = Image.getInstance(IOUtils.toByteArray(is));
+   /*     Image logo = Image.getInstance(LOGO_PATH);
         logo.scaleToFit(200, 200);
         logo.setAlignment(Image.ALIGN_LEFT);
 
-        doc.add(logo);
+        doc.add(logo);*/
 
         // Título
         Paragraph title = new Paragraph("Lista de Transacciones", titleFont);
