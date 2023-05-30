@@ -7,6 +7,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -63,6 +64,7 @@ public class TransactionPDF {
         Font detailsFont = FontFactory.getFont(FontFactory.HELVETICA, 12);
 
         //Logo
+        InputStream is = getClass().getResourceAsStream("/static/Web/Assets/logo.png");
         Image logo = Image.getInstance(LOGO_PATH);
         logo.scaleToFit(200, 200);
         logo.setAlignment(Image.ALIGN_LEFT);
