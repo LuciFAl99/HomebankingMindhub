@@ -13,7 +13,7 @@ import java.util.List;
 public class TransactionPDF {
     private Account account;
     private List<Transaction> listTransactions;
-    private static final String LOGO_PATH = "https://storage.cloud.google.com/logo-homebanking/logo.png"; // Ruta del archivo de imagen del logo
+    private static final String LOGO_PATH = "https://storage.googleapis.com/logo-homebanking/logo.png"; // Ruta del archivo de imagen del logo
 
     public TransactionPDF(List<Transaction> listTransactions, Account account) {
         this.listTransactions = listTransactions;
