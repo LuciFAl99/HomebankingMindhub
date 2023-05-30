@@ -5,6 +5,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,7 +14,7 @@ import java.util.List;
 public class TransactionPDF {
     private Account account;
     private List<Transaction> listTransactions;
-    private static final String LOGO_PATH = "E:/Descargas/DeployHomebanking/src/main/resources/static/Web/Assets/Imágenes/logo.png"; // Ruta del archivo de imagen del logo
+    private static final String LOGO_PATH = new File("E:/Descargas/DeployHomebanking/src/main/resources/static/Web/Assets/Imágenes/logo.png").getAbsolutePath(); // Ruta del archivo de imagen del logo
 
     public TransactionPDF(List<Transaction> listTransactions, Account account) {
         this.listTransactions = listTransactions;
