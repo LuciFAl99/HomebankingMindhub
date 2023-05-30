@@ -4,6 +4,8 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import org.apache.commons.io.IOUtils;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
@@ -65,7 +67,7 @@ public class TransactionPDF {
 
         //Logo
         InputStream is = getClass().getResourceAsStream("/static/Web/Assets/logo.png");
-        Image logo = Image.getInstance(LOGO_PATH);
+        Image logo = Image.getInstance(IOUtils.toByteArray(is));
         logo.scaleToFit(200, 200);
         logo.setAlignment(Image.ALIGN_LEFT);
 
