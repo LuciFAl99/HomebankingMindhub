@@ -1,11 +1,13 @@
 package com.mindhub.Homebanking.Services;
 
-import com.mindhub.Homebanking.Models.Card;
+import com.mindhub.Homebanking.Dtos.PaymentDto;
+import com.mindhub.Homebanking.Models.CardColor;
+import com.mindhub.Homebanking.Models.CardType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 
 public interface CardService {
-    void saveCard(Card card);
-    Card getById(Long id);
-    Card findByNumber(String number);
-    boolean existsByNumber(String number);
-    boolean existsByCvv(int cvv);
+    ResponseEntity<Object> createCard(Authentication authentication, CardType type, CardColor color);
+    ResponseEntity<Object> deleteCard (Authentication authentication , Long id);
+    ResponseEntity<Object> payWithCard(PaymentDto paymentDTO);
 }
